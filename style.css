@@ -1,0 +1,2467 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f8f5b6;
+    min-height: 100vh;
+}
+
+/* Splash Screen */
+/* GLOBAL RESET & GOLD GRADIENT THEME */
+/* GLOBAL RESET & FIX (Screen Stretching Problem Fix) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 50%, #fef08a 100%);
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; /* Screen ko sideways (chouda) stretch hone se rokega */
+}
+
+/* LOGO SIZE FIX (Chhota aur Sleek Icon) */
+.brand-img {
+  width: 50px; /* Logo ka size compact chhota kar diya hai */
+  height: auto;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 2px 6px rgba(217, 119, 6, 0.2));
+  object-fit: contain;
+}
+
+/* LOGIN & SPLASH CENTERING FIX */
+
+
+/* BRANDING & LOGO STYLING */
+.logo {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.brand-icon {
+  font-size: 42px;
+  margin-bottom: 5px;
+  filter: drop-shadow(0 2px 4px rgba(217, 119, 6, 0.3));
+}
+
+.logo h1 {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.logo p {
+  font-size: 14px;
+  font-weight: 700;
+  color: #854d0e;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* 1. SPLASH SCREEN STYLES */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #fffdf0 50%, #fef08a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-container {
+  width: 200px;
+  height: 6px;
+  background: #fef08a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  margin-top: 15px;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  border-radius: 10px;
+  animation: loadingAnim 1.8s infinite ease-in-out;
+}
+
+@keyframes loadingAnim {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 2. LOGIN SCREEN CONTAINER */
+#login {
+  width: 90%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 24px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.15), 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid #fef08a;
+  margin: 40px auto; /* Centered without breaking main screen */
+}
+
+/* INPUT FIELD CONTAINER */
+.inputBox {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #fde047;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  background: #fffdf5;
+  color: #451a03;
+  transition: all 0.3s ease;
+}
+
+.inputBox input:focus {
+  border-color: #d97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+  background: #ffffff;
+}
+
+/* EYE ICON POSITIONING FIX */
+.passwordBox {
+  position: relative;
+}
+
+.passwordBox input {
+  padding-right: 45px;
+}
+
+.passwordBox span {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+/* BUTTONS STYLING */
+#loginBtn, #createAccount {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 5px;
+}
+
+#loginBtn:active, #createAccount:active {
+  transform: scale(0.98);
+}
+
+#registerBtn, #closeRegister {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #f59e0b;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #b45309;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+#registerBtn:hover, #closeRegister:hover {
+  background: #fffbeb;
+}
+
+#loginMessage {
+  text-align: center;
+  color: #dc2626;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* 3. REGISTER POPUP OVERLAY */
+#registerPopup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+}
+
+#registerPopup .popup {
+  background: #ffffff;
+  padding: 26px 22px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  border: 1.5px solid #fef08a;
+  text-align: center;
+}
+
+#registerPopup h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #78350f;
+  margin-bottom: 20px;
+}
+
+/* LOGO IMAGE STYLING */
+/* WHATSAPP ADMIN BUTTON STYLING */
+.admin-support {
+  margin-top: 18px;
+  text-align: center;
+  border-top: 1px dashed #fde047;
+  padding-top: 15px;
+}
+
+#whatsappBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #25D366; /* WhatsApp Green */
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: transform 0.2s, background 0.2s;
+}
+
+#whatsappBtn:active {
+  transform: scale(0.98);
+  background: #20ba5a;
+}
+
+.wa-icon {
+  font-size: 18px;
+}
+
+/* Popups & Modals Base */
+#registerPopup, #profilePopup, #rechargePopup, #bidPopup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popup, .profileCard {
+    width: 90%;
+    max-width: 380px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.popup h2, .popup h3, .profileCard h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.popup input, .popup select, .profileCard input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.popup button, .profileCard button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#createAccount, #saveProfile, #submitBidBtn, #sendRecharge {
+    background: #4CAF50;
+    color: white;
+}
+
+#closeRegister, #closeProfile, #closeBidBtn, #closeRecharge {
+    background: #f44336;
+    color: white;
+}
+
+/* Home & Layout */
+#home {
+    display: none;
+}
+
+
+/* Sticky Top Container: Header + Buttons Scroll Protection */
+/* =========================================================
+   BOSS777 FIXED TOP HEADER & ULTRA WALLET STYLING
+   ========================================================= */
+
+.sticky-top-wrapper {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 2000 !important;
+    width: 100% !important;
+    background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%) !important;
+    box-shadow: 0 4px 18px rgba(217, 119, 6, 0.25) !important;
+}
+
+/* HEADER CONTAINER */
+.header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 10px 14px 6px 14px !important;
+    background: transparent !important;
+}
+
+/* BRAND TITLE */
+.app-title {
+    font-size: 24px !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.5px !important;
+    margin: 0 !important;
+}
+
+.app-title span {
+    color: #78350f !important;
+}
+
+/* MENU GRID BUTTON */
+.modern-grid-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.2s ease !important;
+}
+
+.modern-grid-btn:active {
+    transform: scale(0.95) !important;
+    background: #ffffff !important;
+}
+
+/* ULTRA LUXURY FIXED WALLET PILL */
+.walletTop {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #0f172a !important; /* Deep Dark Luxury Slate */
+    padding: 5px 12px 5px 6px !important;
+    border-radius: 30px !important;
+    border: 1px solid rgba(251, 191, 36, 0.5) !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3) !important;
+}
+
+.wallet-icon-box {
+    width: 26px !important;
+    height: 26px !important;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.wallet-svg {
+    width: 15px !important;
+    height: 15px !important;
+    stroke: #ffffff !important;
+}
+
+#wallet {
+    color: #fbbf24 !important; /* Glowing Gold Color */
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* MARQUEE NOTICE BAR */
+.notice-bar {
+    background: #0f172a !important;
+    color: #fbbf24 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 6px 12px !important;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    border-top: 1px solid rgba(251, 191, 36, 0.2) !important;
+    border-bottom: 1px solid rgba(251, 191, 36, 0.2) !important;
+}
+
+.notice-icon {
+    margin-right: 8px !important;
+    font-size: 13px !important;
+    flex-shrink: 0 !important;
+}
+
+.marquee-box {
+    width: 100% !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
+
+#noticeText {
+    display: inline-block !important;
+    padding-left: 100% !important;
+    animation: marquee 12s linear infinite !important;
+    margin: 0 !important;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* ACTION BUTTONS ROW */
+.quick-action-bar {
+    display: flex !important;
+    gap: 10px !important;
+    padding: 2px 14px 10px 14px !important;
+    background: transparent !important;
+}
+
+.btn-ultra {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    padding: 10px 8px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: transform 0.15s ease !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-ultra:active {
+    transform: scale(0.96) !important;
+}
+
+.btn-starline-premium {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    color: #fbbf24 !important;
+}
+
+.btn-gamerate-premium {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* --- OVERLAY BACKDROP (NO BLUR = NO LAG) --- */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Pure dim background, zero blur lag */
+  z-index: 2400;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s linear, visibility 0.2s linear;
+  will-change: opacity, visibility;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- SIDEBAR DRAWER (GPU ACCELERATED SMOOTH TRANSITION) --- */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+  /* GPU acceleration using transform instead of left */
+  transform: translateX(-100%);
+  transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1);
+  will-change: transform;
+  padding: 20px 16px;
+  z-index: 2500;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+#sideMenu.active {
+  transform: translateX(0);
+}
+
+/* --- PROFILE CARD IN MENU --- */
+.menu-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #f8fafc;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.profile-avatar-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-info-text h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.profile-info-text p {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.menu-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 14px 0;
+}
+
+/* --- MENU NAVIGATION BUTTONS --- */
+.menu-links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-item-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-item-btn:active {
+  background: #f1f5f9;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #475569;
+}
+
+.logout-item {
+  color: #ef4444 !important;
+  margin-top: 10px;
+}
+
+.logout-item .menu-icon {
+  stroke: #ef4444 !important;
+}
+
+/* Main Content Area */
+.main-content {
+    padding: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.main-content h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Market Card Styles */
+/* ULTRA-LUXURY MARKET CARD STYLES */
+.market-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 18px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Luxury Gold Strip on Left Edge */
+.market-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+    border-radius: 18px 0 0 18px;
+    z-index: 2;
+}
+
+/* RIGHT 1/3 PORTION DYNAMIC SHADOW OVERLAY */
+.market-card::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 35%; /* Card ka lagbhag 1/3 hissa */
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+/* OPEN MARKET: Right 1/3 Side Soft Green Glow */
+.market-card:has(.status-open)::after {
+    background: radial-gradient(circle at right center, rgba(34, 197, 94, 0.18) 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%);
+}
+
+/* CLOSED MARKET: Right 1/3 Side Soft Red Glow */
+.market-card:has(.status-closed)::after {
+    background: radial-gradient(circle at right center, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.04) 50%, transparent 100%);
+}
+
+/* Content Elements Z-Index Adjustment */
+.market-info, .market-status {
+    position: relative;
+    z-index: 2;
+}
+
+.market-info h4 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+/* BADA AUR HIGHLIGHTED RESULT (26px) */
+.market-info .result {
+    font-size: 26px;
+    font-weight: 900;
+    color: #dc2626;
+    margin: 6px 0;
+    letter-spacing: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 2px 10px rgba(220, 38, 38, 0.2);
+}
+
+/* BADA AUR SAF DIKHNE WALA TIMING (13px) */
+.market-info .time {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 2px;
+    border: 1px solid #e2e8f0;
+}
+
+.market-status {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.status-open {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid rgba(22, 163, 74, 0.3);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.2);
+}
+
+.status-closed {
+    background: #ffe4e6;
+    color: #be123c;
+    border: 1px solid rgba(225, 29, 72, 0.3);
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
+    transition: all 0.2s ease;
+}
+
+.play-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(217, 119, 6, 0.2);
+}
+
+.play-btn:disabled {
+    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+    color: #ffffff;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.8;
+}
+
+/* Recharge Modal Extras */
+#qrImage {
+    width: 200px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 12px;
+}
+
+.qrText {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.waBtn {
+    display: block;
+    text-align: center;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.popup-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.popup-card {
+  background: #fff; width: 90%; max-width: 400px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+.time-note-box {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* History Popup Specific Styles */
+/* --- FULL PAGE HISTORY CONTAINER --- */
+.history-page-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f4f6f8;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- HEADER BAR --- */
+.history-top-bar {
+  background: #ffc107;
+  height: 60px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.history-back-btn {
+  background: transparent;
+  border: none;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.history-page-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* --- TABS SECTION --- */
+.history-tabs-wrapper {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.history-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 12px;
+  gap: 6px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 8px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 9px;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-btn.active {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* --- CONTENT AREA --- */
+.history-content-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* --- PREMIUM BIGGER CARDS --- */
+.history-item {
+  background: #ffffff;
+  border-left: 6px solid #cbd5e1;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+  border-right: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  transition: transform 0.15s ease;
+}
+
+.history-item:active {
+  transform: scale(0.98);
+}
+
+/* Card Status Border Colors */
+.history-item.status-PENDING { border-left-color: #f59e0b; }
+.history-item.status-SUCCESS, 
+.history-item.status-APPROVED, 
+.history-item.status-WIN, 
+.history-item.status-WON { border-left-color: #10b981; }
+.history-item.status-REJECTED, 
+.history-item.status-LOSS, 
+.history-item.status-LOST { border-left-color: #ef4444; }
+
+/* Card Top Info */
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  font-size: 16px;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+/* Card Bottom Info */
+.history-item-body {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Status Badges */
+.badge-status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge-PENDING { 
+  background: #fef3c7; 
+  color: #d97706; 
+}
+.badge-SUCCESS, .badge-APPROVED, .badge-WIN, .badge-WON { 
+  background: #d1fae5; 
+  color: #059669; 
+}
+.badge-REJECTED, .badge-LOSS, .badge-LOST { 
+  background: #fee2e2; 
+  color: #dc2626; 
+}
+
+/* Full Screen Overlay Page for Starline */
+/* ULTRA-LUXURY STARLINE FULL SCREEN OVERLAY PAGE */
+.full-screen-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f6b5;
+    z-index: 99999 !important;
+    overflow-y: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FIXED / STICKY STARLINE HEADER */
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 16px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid #f59e0b;
+}
+
+.page-header h2 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #f3f4f6;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.btn-close {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
+}
+
+/* STARLINE MARKETS CONTAINER */
+#starlineMarketsList {
+    padding: 20px 16px;
+}
+
+/* BADA AUR SPACING WALA STARLINE CARD */
+/* STARLINE UNIVERSAL BIG & GLOWING CARD FIX */
+#starlineMarketsList > div, 
+#starlineMarketsList .market-card,
+#starlineMarketsList .starline-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%) !important;
+    border-radius: 20px !important;
+    padding: 22px 20px !important;
+    margin-bottom: 18px !important;
+    box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.12) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border: 1px solid rgba(226, 232, 240, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Left Accent Strip */
+#starlineMarketsList > div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+    border-radius: 20px 0 0 20px;
+    z-index: 2;
+}
+
+/* RIGHT 1/3 PORTION DYNAMIC SHADOW OVERLAY */
+#starlineMarketsList > div::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Red Shadow Glow for Closed Status */
+#starlineMarketsList > div:has(.status-closed)::after,
+#starlineMarketsList > div:has(span:contains("CLOSED"))::after,
+#starlineMarketsList > div:has(*:contains("CLOSED"))::after {
+    background: radial-gradient(circle at right center, rgba(239, 68, 68, 0.25) 0%, rgba(239, 68, 68, 0.08) 55%, transparent 100%) !important;
+}
+
+/* Green Shadow Glow for Open Status */
+#starlineMarketsList > div:has(.status-open)::after,
+#starlineMarketsList > div:has(span:contains("OPEN"))::after,
+#starlineMarketsList > div:has(*:contains("OPEN"))::after {
+    background: radial-gradient(circle at right center, rgba(34, 197, 94, 0.28) 0%, rgba(34, 197, 94, 0.08) 55%, transparent 100%) !important;
+}
+
+/* MARKET NAME TITLE (BADA AUR BOLD - 20px) */
+#starlineMarketsList > div h4,
+#starlineMarketsList > div p:first-child,
+#starlineMarketsList > div div:first-child > *:first-child {
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 6px !important;
+}
+
+/* EXTRA LARGE RESULT NUMBER (34px) */
+#starlineMarketsList .result,
+#starlineMarketsList > div p:nth-child(2),
+#starlineMarketsList > div div:first-child > *:nth-child(2) {
+    font-size: 26px !important; /* Ekdam Bada Dikhega */
+    font-weight: 900 !important;
+    color: #dc2626 !important; /* Bold Red */
+    margin: 8px 0 !important;
+    letter-spacing: 3px !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    text-shadow: 0 2px 10px rgba(220, 38, 38, 0.2) !important;
+    display: block !important;
+}
+
+/* STATUS BADGE LUXURY TOUCH */
+#starlineMarketsList .status-badge,
+#starlineMarketsList > div span:not(.result) {
+    font-weight: 800 !important;
+    letter-spacing: 0.8px !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+    font-size: 11px !important;
+}
+
+/* PLAY / RESULT BUTTON */
+#starlineMarketsList button {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 12px 22px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Purane .matka-app-screen CSS ko isse replace karo */
+/* MAIN POPUP SCREEN CONTAINER */
+.matka-app-screen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #fefce8 !important; /* Light Yellow Tint Background */
+  z-index: 999999 !important;
+  display: none;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden !important;
+}
+
+/* TOP HEADER BAR */
+.matka-header-bar {
+  min-height: 56px !important;
+  height: 56px !important;
+  width: 100% !important;
+  background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%) !important; /* Soft Light Yellow Gradient */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 16px !important;
+  border-bottom: 1px solid rgba(234, 179, 8, 0.2) !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+.matka-back-btn {
+  background: none !important;
+  border: none !important;
+  font-size: 26px !important;
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  width: 32px !important;
+  text-align: left !important;
+}
+
+.matka-header-title {
+  flex: 1 !important;
+  text-align: center !important;
+  margin-right: 32px !important;
+}
+
+.matka-header-title h3 {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #1e293b !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* SCREEN 1: GAMES GRID */
+.matka-games-view {
+  flex: 1 !important;
+  padding: 20px 16px !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.matka-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 0 auto !important;
+}
+
+.matka-game-card {
+  background: #ffffff !important;
+  border-radius: 18px !important;
+  padding: 22px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 15px rgba(254, 240, 138, 0.6) !important;
+  border: 1px solid #fef08a !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.matka-card-icon {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%) !important; /* Yellow Icon Circle */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 22px !important;
+  color: #000 !important;
+  margin-bottom: 10px !important;
+}
+
+.matka-game-card span {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+}
+
+/* SCREEN 2: BIDDING VIEW LAYOUT */
+.matka-bidding-view {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: calc(100% - 56px) !important; /* Top bar subtracted */
+  overflow: hidden !important;
+  padding-bottom: 60px !important; /* Space reserved for footer bar */
+  box-sizing: border-box !important;
+}
+
+.matka-form-container {
+  padding: 16px !important;
+  background: #fefce8 !important;
+  flex-shrink: 0 !important; /* Form size remains fixed */
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.matka-form-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 10px !important;
+}
+
+.matka-form-row label {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #475569 !important;
+}
+
+.matka-form-row input, 
+.matka-select-wrapper select {
+  width: 55% !important;
+  height: 40px !important;
+  background: #ffffff !important;
+  border: 1px solid #fde047 !important;
+  border-radius: 20px !important;
+  padding: 0 14px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+}
+
+.matka-select-wrapper { width: 55% !important; position: relative !important; }
+.matka-select-wrapper select { width: 100% !important; }
+
+.matka-preview-box {
+  background: #fff !important;
+  border: 1px dashed #eab308 !important;
+  padding: 8px 12px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+  color: #ca8a04 !important;
+  margin-bottom: 10px !important;
+  word-break: break-all !important;
+}
+
+.matka-btn-row { display: flex !important; justify-content: flex-end !important; }
+
+.matka-btn-gradient {
+  background: linear-gradient(90deg, #facc15 0%, #ca8a04 100%) !important; /* Main Yellow Button Gradient */
+  color: #ffffff !important;
+  border: none !important;
+  padding: 10px 24px !important;
+  border-radius: 20px !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+}
+
+/* FIX 1: TABLE EXPANDS FULLY IN AVAILABLE AREA */
+.matka-table-section {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #fef08a !important; /* Light Yellow Table Area */
+  padding: 12px 16px 0 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.matka-table-header {
+  display: grid !important;
+  grid-template-columns: 1.2fr 1fr 1.5fr 0.8fr !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #334155 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  text-align: center !important;
+  flex-shrink: 0 !important;
+}
+
+.matka-table-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  width: 100% !important;
+}
+
+.matka-table-row {
+  display: grid !important;
+  grid-template-columns: 1.2fr 1fr 1.5fr 0.8fr !important;
+  align-items: center !important;
+  padding: 10px 0 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  border-bottom: 1px solid rgba(0,0,0,0.04) !important;
+  text-align: center !important;
+}
+
+.matka-del-btn { background: none !important; border: none !important; color: #ef4444 !important; font-weight: bold !important; cursor: pointer !important; }
+
+/* FIX 2: BOTTOM FOOTER COVERS 100% FULL SCREEN WIDTH */
+.matka-submit-footer {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important; /* Full width edge to edge */
+  height: 60px !important;
+  background: #fef08a !important; /* Matching Yellow Footer Background */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 16px !important;
+  border-top: 1px solid rgba(0,0,0,0.08) !important;
+  box-sizing: border-box !important;
+  z-index: 9999 !important;
+}
+
+.matka-footer-stat { display: flex !important; flex-direction: column !important; align-items: flex-start !important; }
+.stat-label { font-size: 10px !important; font-weight: 800 !important; color: #64748b !important; }
+.stat-value { font-size: 15px !important; font-weight: 900 !important; color: #0f172a !important; }
+
+.matka-submit-btn { padding: 10px 32px !important; font-size: 14px !important; }
+.matka-error-text { color: #ef4444 !important; font-size: 12px !important; text-align: center !important; font-weight: 700 !important; margin: 4px 0 0 0 !important; }
+
+/* SUCCESS POPUP */
+.matka-popup-overlay {
+  position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
+  background: rgba(0,0,0,0.4) !important; backdrop-filter: blur(4px) !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  z-index: 1000000 !important;
+}
+
+.matka-success-card {
+  background: #ffffff !important;
+  padding: 24px !important;
+  border-radius: 20px !important;
+  text-align: center !important;
+  width: 270px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.matka-tick-circle {
+  width: 58px !important; height: 58px !important; background: #10b981 !important; color: white !important;
+  border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important;
+  font-size: 30px !important; font-weight: bold !important; margin: 0 auto 12px auto !important;
+}
+
+.matka-success-card h3 { margin: 0 0 6px 0 !important; font-size: 16px !important; color: #1e293b !important; }
+.matka-success-card p { font-size: 12px !important; color: #64748b !important; margin-bottom: 16px !important; }
+
+.matka-del-btn {
+  background: none !important;
+  border: none !important;
+  color: #ef4444 !important; /* Red color */
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 4px !important;
+  transition: transform 0.15s ease, color 0.15s ease !important;
+}
+
+.matka-del-btn:active {
+  transform: scale(0.85) !important; /* Click animation */
+}
+
+/* Starline Table Scroll Fix */
+.matka-table-section, 
+#starlineTableSection {
+    max-height: 410px; /* Ya jitni height aapko sahi lage */
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch; /* Mobile Smooth Scrolling */
+}
+
+.matka-table-body, 
+#starlineTableBody {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Light Theme Screen Base */
+.gr-fullscreen-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fffdf0; /* Light Cream Background */
+    z-index: 999999;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Yellow Header Matching App Top Bar */
+.gr-page-header {
+    height: 56px;
+    background: #ffea79; /* App Primary Yellow */
+    border-bottom: 1px solid #ebd45b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+}
+
+.gr-back-btn {
+    background: transparent;
+    border: none;
+    color: #1e293b;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.gr-back-icon {
+    font-size: 22px;
+    line-height: 0;
+    margin-top: -2px;
+}
+
+.gr-header-title {
+    color: #1e293b;
+    font-size: 17px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Body & Cards */
+.gr-page-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gr-section-title {
+    color: #854d0e; /* Deep Gold/Brown Label */
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    padding-left: 2px;
+}
+
+.gr-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gr-card {
+    background: #ffffff;
+    border: 1px solid #fef08a;
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.gr-card.gr-featured {
+    background: #fffbeb;
+    border: 1.5px solid #f59e0b;
+}
+
+.gr-label {
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.gr-value {
+    color: #d97706; /* Golden Green Rate Badge */
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.gr-featured .gr-value {
+    color: #b45309;
+}
+
+/* FIXED FULL PAGE & SMOOTH SCROLLING */
+#starlineHistoryPage {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #f8fafc !important;
+  z-index: 99999 !important;
+  box-sizing: border-box !important;
+}
+
+/* Tabhi dikhega jab JS se open hoga */
+#starlineHistoryPage[style*="display: flex"],
+#starlineHistoryPage[style*="display: block"] {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#starlineHistoryPage .history-top-bar {
+  height: 60px !important;
+  min-height: 60px !important;
+  background: #ffc107 !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+  flex-shrink: 0 !important;
+}
+
+#starlineHistoryPage .history-back-btn {
+  background: transparent;
+  border: none;
+  color: #0f172a;
+  cursor: pointer;
+  padding: 4px;
+}
+
+#starlineHistoryPage .history-page-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+}
+
+/* Actual Scrollable Box */
+#starlineHistoryPage .history-content-container {
+  flex: 1 !important;
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 16px 16px 80px 16px !important;
+  box-sizing: border-box !important;
+}
+
+/* Big Cards Matching Main Market */
+.history-item {
+  background: #ffffff !important;
+  border-left: 6px solid #cbd5e1 !important;
+  padding: 16px !important;
+  margin-bottom: 14px !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-right: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.history-item.status-PENDING { border-left-color: #f59e0b !important; }
+.history-item.status-WON, .history-item.status-WIN { border-left-color: #10b981 !important; }
+.history-item.status-LOST, .history-item.status-LOSS { border-left-color: #ef4444 !important; }
+
+.history-item-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  color: #0f172a !important;
+  margin-bottom: 10px !important;
+}
+
+.history-item-body {
+  color: #475569 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.badge-status {
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+.badge-PENDING { background: #fef3c7 !important; color: #d97706 !important; }
+.badge-WON, .badge-WIN { background: #d1fae5 !important; color: #059669 !important; }
+.badge-LOST, .badge-LOSS { background: #fee2e2 !important; color: #dc2626 !important; }
+
+/* --- RECHARGE & WITHDRAWAL ALL STATUS LEFT BORDER COLORS --- */
+
+/* 1. Yellow/Orange Side Border for Pending */
+.history-item.status-PENDING,
+.history-item.status-pending { 
+  border-left: 6px solid #f59e0b !important; 
+}
+
+/* 2. Green Side Border for Success & Approved */
+.history-item.status-SUCCESS,
+.history-item.status-success,
+.history-item.status-APPROVED,
+.history-item.status-approved,
+.history-item.status-WIN,
+.history-item.status-WON { 
+  border-left: 6px solid #10b981 !important; 
+}
+
+/* 3. Red Side Border for Rejected & Failed */
+.history-item.status-REJECTED,
+.history-item.status-rejected,
+.history-item.status-FAILED,
+.history-item.status-failed,
+.history-item.status-LOSS,
+.history-item.status-LOST { 
+  border-left: 6px solid #ef4444 !important; 
+}
+
+
+/* --- BADGES BACKGROUND & TEXT COLORS --- */
+
+/* Pending Badge */
+.badge-PENDING, .badge-pending { 
+  background: #fef3c7 !important; 
+  color: #d97706 !important; 
+}
+
+/* Success & Approved Badge */
+.badge-SUCCESS, .badge-success,
+.badge-APPROVED, .badge-approved { 
+  background: #d1fae5 !important; 
+  color: #059669 !important; 
+}
+
+/* Rejected Badge */
+.badge-REJECTED, .badge-rejected,
+.badge-FAILED, .badge-failed { 
+  background: #fee2e2 !important; 
+  color: #dc2626 !important; 
+}
+
+/* Withdrawal Section Custom Styles */
+.withdraw-card-box {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  border: 1px solid #e2e8f0;
+}
+
+.section-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.w-tab-btn {
+  flex: 1;
+  padding: 10px 4px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.w-tab-btn.active {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.input-group {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #10b981;
+}
+
+.btn-primary-big {
+  width: 100%;
+  padding: 14px;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex; justify-content: center; align-items: center;
+}
+
+/* FORCE REMOVE ALL BLUR FILTERS FROM MODALS AND POPUPS */
+#declareResultPopup,
+.modal,
+.modal-overlay,
+.popup-overlay,
+[id*="adminModal"],
+[id*="ResultModal"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(15, 23, 42, 0.6) !important; /* Normal Dim Dark Color */
+    
+    /* HARD OVERWRITE FOR ALL BLUR EFFECTS */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    
+    z-index: 9999 !important;
+}
+
+/* MODAL CARD GPU ACCELERATION (SMOOTH POPUP) */
+#declareResultPopup > div,
+.modal-content,
+.popup-content {
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+}
+
+/* RESET & BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: #f8fafc;
+    color: #1e293b;
+    padding-bottom: 65px;
+}
+
+/* ==========================================
+   UNIFORM APP SUB-PAGES & HEADERS
+   ========================================== */
+
+.app-sub-page {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #ffffff !important; /* Clean White Background */
+    z-index: 9999 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 40px !important;
+}
+
+/* 100% UNIFORM HEADER ACROSS ALL PAGES */
+.sub-page-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 56px !important; /* Passbook Exact Height */
+    background: linear-gradient(135deg, #ffc107, #ffb300) !important;
+    padding: 0 16px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+.sub-page-header .back-btn {
+    background: none !important;
+    border: none !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    color: #000000 !important;
+    position: absolute !important;
+    left: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.sub-page-header h2 {
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.sub-page-body {
+    padding: 16px;
+    background: #ffffff;
+}
+
+/* SECTION TITLES */
+.section-title {
+    text-align: center;
+    color: #881337;
+    font-weight: 800;
+    font-size: 14px;
+    margin: 14px 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   BIDS 4-BUTTONS CONTAINER
+   ========================================== */
+
+.bids-grid-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.bids-card-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    background: #ffffff !important;
+    border: 1.5px solid #fecdd3 !important;
+    color: #881337 !important;
+    box-shadow: 0 4px 10px rgba(136, 19, 55, 0.05);
+    transition: transform 0.15s ease;
+}
+
+.bids-card-btn:active {
+    transform: scale(0.97);
+    background: #fff1f2 !important;
+}
+
+.bids-card-btn .icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #fff1f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.bids-card-btn svg {
+    width: 22px;
+    height: 22px;
+    stroke: #881337 !important;
+}
+
+/* ==========================================
+   PASSBOOK STYLE HISTORY CARDS
+   ========================================== */
+
+.history-card-passbook {
+    background: #ffffff !important;
+    border: 1.5px solid #fecdd3 !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 3px 8px rgba(136, 19, 55, 0.06) !important;
+}
+
+/* Dark Red Bazar Name Header */
+.history-card-passbook .bazar-title-head {
+    background: #881337 !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Light Red Inside Body */
+.history-card-passbook .card-inner-body {
+    padding: 12px 14px !important;
+    background: #ffffff !important;
+    color: #9f1239 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+.history-card-passbook .card-inner-body p,
+.history-card-passbook .card-inner-body div {
+    color: #9f1239 !important;
+    margin-bottom: 4px;
+}
+
+.history-card-passbook .win-tag {
+    background: #16a34a !important;
+    color: #ffffff !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+}
+
+.history-card-passbook .bid-tag {
+    background: #fff1f2 !important;
+    color: #9f1239 !important;
+    border: 1px solid #fecdd3 !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+/* ==========================================
+   BOTTOM NAVIGATION BAR
+   ========================================== */
+
+/* ==========================================
+   FLOATING BOTTOM NAVIGATION (STRICT VISIBILITY)
+   ========================================== */
+#bottomNav.bottom-nav {
+    position: fixed !important;
+    bottom: 12px !important;
+    left: 14px !important;
+    right: 14px !important;
+    width: auto !important;
+    height: 62px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    display: none !important; /* DEFAULT HIDDEN */
+    justify-content: space-around !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.35) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+    z-index: 9999 !important; /* Low enough so modals overlay above it */
+    padding: 0 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+/* VISIBILITY DRIVEN BY JS CLASSES ONLY */
+body.show-bottom-nav #bottomNav {
+    display: flex !important;
+}
+
+body.hide-bottom-nav #bottomNav {
+    display: none !important;
+}
+
+/* =========================================================
+   THEME MATCHED FLOATING BOTTOM NAV (GOLD / YELLOW-ORANGE)
+   ========================================================= */
+
+/* Unselected / Regular Nav Items */
+.nav-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 1 !important;
+    color: #334155 !important; /* Soft Medium Dark Slate */
+    cursor: pointer !important;
+    text-decoration: none !important;
+    padding: 2px 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Regular Outlined Icons */
+.nav-svg {
+    width: 23px !important;
+    height: 23px !important;
+    stroke: #334155 !important;
+    stroke-width: 1.8px !important;
+    fill: none !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Regular Labels */
+.nav-label {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    margin-top: 3px !important;
+    color: #334155 !important;
+}
+
+/* Active State for Regular Items (Yellow-Orange Amber Theme) */
+.nav-item.active {
+    color: #d97706 !important; /* Rich Yellow-Orange */
+}
+
+.nav-item.active .nav-svg {
+    stroke: #d97706 !important;
+    stroke-width: 2.2px !important;
+}
+
+.nav-item.active .nav-label {
+    color: #d97706 !important;
+    font-weight: 700 !important;
+}
+
+/* =========================================================
+   SPECIAL ACTIVE CENTER BUTTON (GOLD / YELLOW-ORANGE GRADIENT)
+   ========================================================= */
+
+#navHomeBtn {
+    position: relative !important;
+}
+
+/* Center Active Badge (Yellow-Orange Theme Gradient) */
+#navHomeBtn.active {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%) !important;
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.45) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    flex: none !important;
+}
+
+/* Hide Home label text when active */
+#navHomeBtn.active .nav-label {
+    display: none !important;
+}
+
+/* White Filled Home Icon inside Gold Box */
+#navHomeBtn.active .nav-svg {
+    width: 26px !important;
+    height: 26px !important;
+    stroke: #ffffff !important;
+    fill: #ffffff !important;
+    stroke-width: 0px !important;
+    transform: translateY(0) !important;
+}
+
+/* =========================================================
+   SUB-PAGES & OVERLAY Z-INDEX FIX (COVER BOTTOM NAVIGATION)
+   ========================================================= */
+
+/* Aapke app ke sabhi sub-pages, popups, full screens ko Bottom Nav ke UPAR lao */
+.sub-page, .full-page, .page-container, .screen, 
+div[id*="Page"], div[id*="Modal"], div[id*="Popup"], div[id*="Screen"],
+#profilePage, #gameRatesModal, #noticeModal, #rulesModal, 
+#rechargePopup, #withdrawPopup, #supportModal, #bankDetailsPage, 
+#walletPage, #historyPage, #settingPage {
+    z-index: 100005 !important; /* Bottom Nav (9999) se bada z-index */
+}
+
+/* =========================================================
+   ULTRA LUXURY SUCCESS MODAL WITH CHECKMARK ANIMATION
+   ========================================================= */
+
+#registerSuccessModal {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    display: none;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 50000 !important;
+}
+
+.success-card {
+    width: 85% !important;
+    max-width: 340px !important;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    padding: 28px 20px !important;
+    text-align: center !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(245, 158, 11, 0.25) !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.4) !important;
+    animation: successPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes successPop {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* SUCCESS ICON & CHECKMARK ANIMATION */
+.success-icon-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 16px !important;
+}
+
+.success-icon-circle {
+    width: 70px !important;
+    height: 70px !important;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid #f59e0b !important;
+    box-shadow: 0 8px 18px rgba(245, 158, 11, 0.3) !important;
+}
+
+.checkmark-svg {
+    width: 42px !important;
+    height: 42px !important;
+}
+
+.checkmark-circle {
+    stroke: #f59e0b;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke: #b45309;
+    stroke-width: 4.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.3s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+
+/* MODAL TEXT & BUTTON */
+.success-card h2 {
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    margin-bottom: 6px !important;
+}
+
+.success-card p {
+    font-size: 13px !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 20px !important;
+}
+
+#successContinueBtn {
+    width: 100% !important;
+    padding: 12px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%) !important;
+    color: #ffffff !important;
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.5px !important;
+    cursor: pointer !important;
+    box-shadow: 0 8px 18px rgba(217, 119, 6, 0.3) !important;
+}
+
+.matka-card-icon {
+    width: 52px;
+    height: 52px;
+    background: #ffffff;
+    border: 1.5px solid rgba(245, 158, 11, 0.4);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px auto;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
+}
+
+.matka-game-card span {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1e293b;
+    letter-spacing: 0.2px;
+}
+
+.res-page-hidden {
+  display: none;
+}
+
+#declaredResultsPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8fafc;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.res-header {
+  position: sticky;
+  top: 0;
+  background: #1e293b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.res-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.res-icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.res-icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.res-filter-wrapper {
+  position: relative;
+}
+
+.res-filter-wrapper input[type="date"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Tab Styling */
+.res-tabs {
+  display: flex;
+  background: #ffffff;
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 52px;
+  z-index: 9;
+}
+
+.res-tab-btn {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #64748b;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.res-tab-btn.active {
+  color: #d97706;
+  border-bottom-color: #d97706;
+  background: #fffbe3;
+}
+
+.res-content {
+  padding: 16px;
+}
+
+.res-tab-content {
+  display: none;
+}
+
+.res-tab-content.active {
+  display: block;
+}
+
+.res-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.res-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.res-market-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.res-market-result {
+  font-size: 16px;
+  font-weight: 800;
+  color: #d97706;
+  letter-spacing: 1px;
+}
